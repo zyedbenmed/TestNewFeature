@@ -9,7 +9,7 @@ class Application : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        setupTimber()
+//        setupTimber()
     }
 
     private fun setupTimber(){
