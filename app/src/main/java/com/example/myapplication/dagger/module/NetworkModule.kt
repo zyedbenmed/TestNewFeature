@@ -16,7 +16,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesRetrofit(okHttpClient: OkHttpClient) =
+    fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL_NASA)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

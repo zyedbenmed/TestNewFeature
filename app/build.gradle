@@ -39,12 +39,12 @@ dependencies {
     implementation appDependencies.androidxCore
     implementation appDependencies.constraintLayout
     implementation appDependencies.timber
-//    implementation appDependencies.dagger
+    implementation appDependencies.dagger
 //    annotationProcessor appDependencies.daggerCompiler
-//    kapt appDependencies.daggerCompiler
+    kapt appDependencies.daggerCompiler
     implementation appDependencies.javaxInject
-    implementation appDependencies.daggerAndroid
-    implementation appDependencies.daggerAndroidSupport
+//    implementation appDependencies.daggerAndroid
+//    implementation appDependencies.daggerAndroidSupport
     kapt appDependencies.daggerAndroidProcessor
     implementation appDependencies.retrofit
     implementation appDependencies.okhttpLogging

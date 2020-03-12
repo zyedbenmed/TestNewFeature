@@ -14,8 +14,9 @@ import javax.inject.Singleton
  * Define here all objects that are shared throughout the app, like SharedPreferences, navigators or
  * others. If some of those objects are singletons, they should be annotated with `@Singleton`.
  */
-@Module(includes = [NetworkModule::class])
-abstract class AppModule {
+@Module
+class AppModule(private val application: Application) {
+
     /**
      *  *** IMPORTANT ***
      * Use activity context for Dialogs (Toast, AlertDialog, SnackBar...)
@@ -29,17 +30,17 @@ abstract class AppModule {
      */
     @Provides
     @ApplicationContext
-    fun provideContext(application: Application): Context {
+    fun provideContext(): Context {
         return application.applicationContext
     }
 
     //***************************************************
 
-    @Provides
-    @Singleton
-    fun provideApplication(application: Application): Application{
-        return application
-    }
+//    @Provides
+//    @Singleton
+//    fun provideApplication(application: Application): Application{
+//        return application
+//    }
 
     @Provides
     fun provideSharedPrefs(application: Application): SharedPreferences{
