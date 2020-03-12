@@ -16,6 +16,7 @@ ext{
     daggerVersion = '2.21'
     retrofitVersion = '2.6.2'
     okhttpLoggingVersion = '3.11.0'
+    rxJavaVersion = '2.0.2'
     //Test
     junitVersion = '4.12'
     testRunnerVersion = '1.1.1'
@@ -37,6 +38,7 @@ ext{
             retrofitRxJavaAdapter : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
             retrofitGsonConverter : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
             okhttpLogging         : "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingVersion",
+            rxJava                : "io.reactivex.rxjava2:rxandroid:$rxJavaVersion",
     ]
 
     appTestDependencies = [

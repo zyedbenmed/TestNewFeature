@@ -50,6 +50,7 @@ dependencies {
     implementation appDependencies.okhttpLogging
     implementation appDependencies.retrofitRxJavaAdapter
     implementation appDependencies.retrofitGsonConverter
+    api appDependencies.rxJava
 
     testImplementation appTestDependencies.junit
     androidTestImplementation appTestDependencies.runner
