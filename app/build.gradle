@@ -33,27 +33,34 @@ android {
 dependencies {
     def appDependencies = rootProject.ext.appDependencies
     def appTestDependencies = rootProject.ext.appTestDependencies
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation appDependencies.kotlin
-    implementation appDependencies.appcompact
-    implementation appDependencies.androidxCore
-    implementation appDependencies.constraintLayout
-    implementation appDependencies.timber
-    implementation appDependencies.dagger
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api appDependencies.kotlin
+    api appDependencies.appcompact
+    api appDependencies.androidxCore
+    api appDependencies.constraintLayout
+    api appDependencies.timber
+    api appDependencies.dagger
 //    annotationProcessor appDependencies.daggerCompiler
     kapt appDependencies.daggerCompiler
-    implementation appDependencies.javaxInject
-//    implementation appDependencies.daggerAndroid
-//    implementation appDependencies.daggerAndroidSupport
+    api appDependencies.javaxInject
+//    api appDependencies.daggerAndroid
+//    api appDependencies.daggerAndroidSupport
     kapt appDependencies.daggerAndroidProcessor
-    implementation appDependencies.retrofit
-    implementation appDependencies.okhttpLogging
-    implementation appDependencies.retrofitRxJavaAdapter
-    implementation appDependencies.retrofitGsonConverter
+    api appDependencies.retrofit
+    api appDependencies.okhttpLogging
+    api appDependencies.retrofitRxJavaAdapter
+    api appDependencies.retrofitGsonConverter
     api appDependencies.rxJava
+    api appDependencies.lifecycle
+    annotationProcessor appDependencies.lifecycleAnnotation
 
+    api appTestDependencies.espressoIdlingResource
     testImplementation appTestDependencies.junit
-    androidTestImplementation appTestDependencies.runner
+    androidTestImplementation appTestDependencies.testJunit
+    androidTestImplementation appTestDependencies.testRunner
+    androidTestImplementation appTestDependencies.testCore
     androidTestImplementation appTestDependencies.espresso
+    androidTestImplementation appTestDependencies.espressoContrib
+    androidTestImplementation appTestDependencies.mockk
 
 }

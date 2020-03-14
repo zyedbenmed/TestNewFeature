@@ -34,12 +34,12 @@ class NetworkModule {
     fun providesOkHttpClient(okHttpClientBuilder: OkHttpClient.Builder,
                              httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         if (BuildConfig.DEBUG) {
-//            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             okHttpClientBuilder.addNetworkInterceptor(httpLoggingInterceptor)
         }
         return okHttpClientBuilder.build()
     }
 
     @Provides
-    fun providesAlbumApi(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
+    fun providesPostApi(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 }

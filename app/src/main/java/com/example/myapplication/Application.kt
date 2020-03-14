@@ -5,6 +5,7 @@ import com.example.myapplication.dagger.component.AppComponent
 import com.example.myapplication.dagger.component.DaggerAppComponent
 import com.example.myapplication.dagger.module.AppModule
 import com.example.myapplication.dagger.module.NetworkModule
+import com.example.myapplication.dagger.module.PostModule
 import dagger.Component
 import timber.log.Timber
 

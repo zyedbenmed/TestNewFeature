@@ -17,10 +17,14 @@ ext{
     retrofitVersion = '2.6.2'
     okhttpLoggingVersion = '3.11.0'
     rxJavaVersion = '2.0.2'
+    lifeCycleVersion = '1.1.1'
     //Test
     junitVersion = '4.12'
-    testRunnerVersion = '1.1.1'
-    espressoVersion = '3.1.1'
+    androidxTestVersion = '1.1.0'
+    espressoVersion = '3.1.0'
+    idlingResourceVersion = '3.1.0'
+    mockkVersion = '1.9.3'
+
     // App
     appDependencies = [
             kotlin                : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
@@ -39,11 +43,18 @@ ext{
             retrofitGsonConverter : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
             okhttpLogging         : "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingVersion",
             rxJava                : "io.reactivex.rxjava2:rxandroid:$rxJavaVersion",
+            lifecycle             : "android.arch.lifecycle:extensions:$lifeCycleVersion",
+            lifecycleAnnotation   : "android.arch.lifecycle:compiler:$lifeCycleVersion",
     ]
 
     appTestDependencies = [
             junit                 : "junit:junit:$junitVersion",
-            runner                : "androidx.test:runner:$testRunnerVersion",
-            espresso              : "androidx.test.espresso:espresso-core:$espressoVersion"
+            testJunit             : "androidx.test.ext:junit-ktx:$androidxTestVersion",
+            testRunner            : "androidx.test:runner:$androidxTestVersion",
+            testCore              : "androidx.test:core:$androidxTestVersion",
+            espresso              : "androidx.test.espresso:espresso-core:$espressoVersion",
+            espressoContrib       : "androidx.test.espresso:espresso-contrib:$espressoVersion",
+            espressoIdlingResource: "androidx.test.espresso:espresso-idling-resource:$idlingResourceVersion",
+            mockk                 : "io.mockk:mockk-android:$mockkVersion"
     ]
 }

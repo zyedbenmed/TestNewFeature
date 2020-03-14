@@ -1,4 +1,3 @@
 package com.example.myapplication.models
 
-class PostModel {
-}
+data class PostModel(val userId: Int, val id: Int, val title: String, val text: String)
