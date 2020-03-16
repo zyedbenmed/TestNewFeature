@@ -1,13 +1,24 @@
 package com.example.myapplication.common
 
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.Application
 import com.example.myapplication.R
+import com.example.myapplication.dagger.component.ActivityComponent
+import com.example.myapplication.dagger.component.DaggerActivityComponent
+import com.example.myapplication.dagger.module.PostModule
 
-abstract class BaseActivity<V : BaseViewModel> : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
+
+    private val activityComponent: ActivityComponent by lazy {
+        DaggerActivityComponent.builder().postModule(PostModule())
+            .appComponent(Application.appComponent).build()
+    }
 
     private val container: ViewGroup by lazy {
         findViewById<ViewGroup>(android.R.id.content)
@@ -32,6 +43,11 @@ abstract class BaseActivity<V : BaseViewModel> : AppCompatActivity() {
 //                showBottomDialog("Server Error! ", true)
 //        })
 
+    }
+
+    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+        activityComponent.inject(this)
+        return super.onCreateView(name, context, attrs)
     }
 
     fun toggleLoading(show: Boolean, isCancellable: Boolean) {

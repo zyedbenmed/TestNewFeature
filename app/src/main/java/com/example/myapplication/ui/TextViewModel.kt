@@ -8,28 +8,27 @@ import com.example.myapplication.models.PostModel
 import io.reactivex.functions.Consumer
 import javax.inject.Inject
 
-
-class MainViewModel @Inject constructor(private val dataManagerAccessor: DataManagerAccessor) :
+class TextViewModel @Inject constructor(private val dataManagerAccessor: DataManagerAccessor) :
     BaseViewModel() {
-//    val getPostData: MutableLiveData<PostModel> = MutableLiveData()
-//
-//
-//    fun getPost() {
+    val getPostData: MutableLiveData<PostModel> = MutableLiveData()
+
+
+    fun getPost() {
 //        EspressoIdlingResource.increment()
-//        toggleLoading(true)
-//
-//        subscribe(dataManagerAccessor.accessGetPosts(), Consumer {
-//            toggleLoading(false)
-//            getPostData.postValue(it[0])
+        toggleLoading(true)
+
+        subscribe(dataManagerAccessor.accessGetPosts(), Consumer {
+            toggleLoading(false)
+            getPostData.postValue(it[0])
 //            EspressoIdlingResource.decrement()
-//
-//        }, Consumer {
-//            toggleLoading(false)
+
+        }, Consumer {
+            toggleLoading(false)
 //            if (it is RetrofitException)
-//            errorEvent.postValue(it.message)
+            errorEvent.postValue(it.message)
 //            EspressoIdlingResource.decrement()
-//        })
-//    }
-//
-//
+        })
+    }
+
+
 }
