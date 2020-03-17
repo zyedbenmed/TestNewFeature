@@ -9,7 +9,7 @@ import com.example.myapplication.dagger.module.PostModule
 import dagger.Component
 import timber.log.Timber
 
-class Application : Application() {
+open class Application : Application() {
 
 
     companion object{

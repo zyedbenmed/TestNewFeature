@@ -8,15 +8,38 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.rule.ActivityTestRule
+import com.example.myapplication.Application
+import com.example.myapplication.EspressoIdlingResource
+import com.example.myapplication.common.DaggerViewModelFactory
 import com.example.myapplication.dataManager.DataManager
+import com.example.myapplication.fakes.DaggerFakePostComponent
+import com.example.myapplication.fakes.FakePostModule
+import com.example.myapplication.utils.TaskExecutorWithIdlingResourceRule
 
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import org.junit.Before
+import org.junit.Rule
 
 import org.junit.Test
+import org.junit.runner.RunWith
 
+@RunWith(AndroidJUnit4::class)
 class TextFragmentTest {
+
+//    @Rule
+//    @JvmField
+//    val executorRule = TaskExecutorWithIdlingResourceRule()
+//    @Rule
+//    @JvmField
+//    val countingAppExecutors = EspressoIdlingResource
+
+    @Rule
+    @JvmField
+    var activityRule = ActivityTestRule(MainActivity::class.java, true, false)
 
     private val fakeDataManager = FakeDataManager()
 
@@ -32,17 +55,31 @@ class TextFragmentTest {
     private val mockedValue = "Mock Successful"
 
     @Before
-    fun setUp() {
-        val screnario = launchFragmentInContainer{
-            TextFragment().apply {
-                viewModelFactory =  createFor(textViewModel)
-            }
-        }
+    fun initTestDagger() {
+        val instrumentation = InstrumentationRegistry.getInstrumentation()
+        val app = instrumentation.targetContext.applicationContext as Application
 
-        every { dataManager.getPosts()} answers {
-            fakeDataManager.getPosts()
-        }
+        val component = DaggerFakePostComponent.builder()
+            .fakePostModule(FakePostModule(fakeDataManager))
+            .activityComponent(MainActivity.activityComponent)
+            .build()
+
+        Application.appComponent = component
+
     }
+
+//    @Before
+//    fun setUp() {
+//        val screnario = launchFragmentInContainer{
+//            TextFragment().apply {
+//                viewModelFactory =  createFor(textViewModel)
+//            }
+//        }
+//
+//        every { dataManager.getPosts()} answers {
+//            fakeDataManager.getPosts()
+//        }
+//    }
 
     @Test
     fun test() {

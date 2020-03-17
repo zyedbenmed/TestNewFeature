@@ -4,18 +4,19 @@ import com.example.myapplication.common.BaseDataManager
 import com.example.myapplication.models.PostModel
 import com.example.myapplication.repositories.PostRepository
 import com.example.myapplication.repositories.PostRepositoryImpl
+import com.example.myapplication.useCase.PostUseCase
 import io.reactivex.Observable
 import javax.inject.Inject
 
 open class DataManager() : BaseDataManager() {
-    private lateinit var postRepositoryImpl: PostRepositoryImpl
-    constructor(postRepositoryImpl: PostRepositoryImpl) : this() {
-        this.postRepositoryImpl = postRepositoryImpl
+    private lateinit var postUseCase: PostUseCase
+    constructor(postUseCase: PostUseCase) : this() {
+        this.postUseCase = postUseCase
     }
 
 
     open fun getPosts(): Observable<List<PostModel>> {
-        return postRepositoryImpl.getPosts()
+        return postUseCase.getPosts()
     }
 
 }

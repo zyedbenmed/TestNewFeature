@@ -13,9 +13,9 @@ abstract class BaseVMActivity<out T : BaseViewModel> : BaseActivity() {
 
     protected abstract val viewModel: T?
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//    }
 
     protected inline fun <reified VM : ViewModel> injectViewModel(): Lazy<VM> =
         viewModels { viewModelFactory }

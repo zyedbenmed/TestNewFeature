@@ -20,9 +20,12 @@ import javax.inject.Inject
 class MainActivity : BaseVMActivity<MainViewModel>() {
 
 
-    private val activityComponent: ActivityComponent by lazy {
-        DaggerActivityComponent.builder().postModule(PostModule())
-            .appComponent(Application.appComponent).build()
+    companion object {
+        val activityComponent: ActivityComponent by lazy {
+
+            DaggerActivityComponent.builder().postModule(PostModule())
+                .appComponent(Application.appComponent).build()
+        }
     }
 
     @Inject

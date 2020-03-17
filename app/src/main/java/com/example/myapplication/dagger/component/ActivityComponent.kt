@@ -7,6 +7,7 @@ import com.example.myapplication.dagger.module.ViewModelModule
 import com.example.myapplication.dagger.qualifier.PostScope
 import com.example.myapplication.dataManager.DataManager
 import com.example.myapplication.dataManager.DataManagerAccessor
+import com.example.myapplication.repositories.PostRepository
 import com.example.myapplication.repositories.PostRepositoryImpl
 import com.example.myapplication.ui.MainActivity
 import com.example.myapplication.ui.TextFragment
@@ -25,7 +26,7 @@ interface ActivityComponent {
 
     fun provideDaggerViewModelFactory(): DaggerViewModelFactory
 
-    fun injectPostRepo(): PostRepositoryImpl
+    fun injectPostRepo(): PostRepository
 
     fun injectDataManagerAccessor(): DataManagerAccessor
 

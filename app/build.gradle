@@ -16,6 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner "com.example.myapplication.utils.CustomTestRunner"
     }
     buildTypes {
         release {
@@ -80,10 +81,17 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
 
+//    testImplementation "androidx.arch.core:core-runtime:2.1.0"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+
 //    androidTestImplementation appTestDependencies.testRunner
 //    androidTestImplementation appTestDependencies.testCore
     androidTestImplementation appTestDependencies.espresso
     androidTestImplementation appTestDependencies.espressoContrib
     androidTestImplementation appTestDependencies.mockk
+
+    kaptAndroidTest appDependencies.daggerCompiler
+    androidTestImplementation appDependencies.dagger
 
 }
