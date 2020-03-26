@@ -1,3 +1,8 @@
+/*------------------------------------------------------------------------------
+ - Copyright (c) Created by zied.ben-mohamed
+ - Last modified on 3/26/20 6:10 PM
+ -----------------------------------------------------------------------------*/
+
 package com.example.myapplication.ui
 
 import androidx.lifecycle.ViewModelProviders
@@ -33,7 +38,6 @@ class TextFragment : BaseVMFragment<TextViewModel>() {
     }
 
     override val viewModel: TextViewModel by injectViewModel()
-    
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
