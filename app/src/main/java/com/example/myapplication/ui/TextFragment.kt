@@ -33,6 +33,7 @@ class TextFragment : BaseVMFragment<TextViewModel>() {
     }
 
     override val viewModel: TextViewModel by injectViewModel()
+    
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
