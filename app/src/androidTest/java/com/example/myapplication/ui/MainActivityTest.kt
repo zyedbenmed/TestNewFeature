@@ -7,9 +7,11 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.example.myapplication.EspressoIdlingResourceRule
 import com.example.myapplication.FakeDataManager
+import com.example.myapplication.data.api.ApiService
 import com.example.myapplication.dataManager.DataManager
 import com.example.myapplication.dataManager.DataManagerAccessor
 import com.example.myapplication.models.PostModel
+import com.example.myapplication.models.PostResponse
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.impl.annotations.SpyK
@@ -35,25 +37,27 @@ class MainActivityTest {
 
     private val mockedValue = "Mock Successful"
 
-    private val post: PostModel = PostModel(
+    private val post: PostResponse = PostResponse(
         userId = 1,
         id = 1,
         title = "0222",
-        text = mockedValue
+        body = mockedValue
     )
 
-    private lateinit var list: Observable<List<PostModel>>
-    private val mockedCardList = mutableListOf<PostModel>()
+    private lateinit var list: Observable<List<PostResponse>>
+    private val mockedCardList = mutableListOf<PostResponse>()
 
     @Test
     fun test_TextView_Text() {
         val fakeDataManager = FakeDataManager()
-        val dataManagerAccessor = mockk<DataManagerAccessor>()
+//        val dataManagerAccessor = mockk<DataManagerAccessor>()
+        val apiService: ApiService = mockk()
         mockedCardList.add(post)
         list = Observable.fromArray(mockedCardList)
-        every {  dataManagerAccessor.accessGetPosts()} answers {
-            fakeDataManager.getPosts()
-        }
+//        every {  dataManagerAccessor.accessGetPosts()} answers {
+//            fakeDataManager.getPosts()
+//        }
+        every { apiService.getPosts() } returns list
         onView(ViewMatchers.withText(mockedValue)).check(matches(isDisplayed()))
     }
 

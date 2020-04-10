@@ -37,7 +37,8 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
         viewModel = ViewModelProviders.of(this, this.viewModeFactory).get(MainViewModel::class.java)
 
-        viewModel.getPost()
+        button.setOnClickListener {  viewModel.getPost() }
+
 
         viewModel.getPostData.observe(this, Observer {
             text.text = it.text

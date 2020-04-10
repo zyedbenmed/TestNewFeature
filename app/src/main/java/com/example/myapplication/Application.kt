@@ -9,7 +9,7 @@ import com.example.myapplication.dagger.module.PostModule
 import dagger.Component
 import timber.log.Timber
 
-class Application : Application() {
+open class Application : Application() {
 
 
     companion object{
@@ -23,7 +23,7 @@ class Application : Application() {
         setupDagger()
     }
 
-    private fun setupDagger() {
+    open fun setupDagger() {
         appComponent = DaggerAppComponent.builder()
             .appModule(AppModule(this))
             .networkModule(NetworkModule())

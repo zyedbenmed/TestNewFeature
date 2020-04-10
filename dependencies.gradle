@@ -15,7 +15,7 @@ ext{
     javaxInjectVersion = '1'
     daggerVersion = '2.21'
     retrofitVersion = '2.6.2'
-    okhttpLoggingVersion = '3.11.0'
+    okhttpLoggingVersion = '4.5.0'
     rxJavaVersion = '2.0.2'
     lifeCycleVersion = '1.1.1'
     //Test
